@@ -1,5 +1,6 @@
-package com.oplfun.onlinepicketline.data.model
+package com.oplfun.onlinepicketline
 
+import com.oplfun.onlinepicketline.data.model.LaborDispute
 import org.junit.Assert.*
 import org.junit.Test
 
