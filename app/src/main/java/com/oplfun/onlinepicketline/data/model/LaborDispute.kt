@@ -1,3 +1,93 @@
+import com.google.gson.annotations.SerializedName
+
+/**
+ * Data model for the new unified blocklist API response
+ */
+data class BlocklistApiResponse(
+    @SerializedName("version")
+    val version: String?,
+    @SerializedName("generatedAt")
+    val generatedAt: String?,
+    @SerializedName("totalUrls")
+    val totalUrls: Int?,
+    @SerializedName("employers")
+    val employers: List<Employer>?,
+    @SerializedName("blocklist")
+    val blocklist: List<BlocklistEntry>?,
+    @SerializedName("actionResources")
+    val actionResources: ActionResources?
+)
+
+data class Employer(
+    @SerializedName("id")
+    val id: String?,
+    @SerializedName("name")
+    val name: String?,
+    @SerializedName("urlCount")
+    val urlCount: Int?
+)
+
+data class BlocklistEntry(
+    @SerializedName("url")
+    val url: String?,
+    @SerializedName("employer")
+    val employer: String?,
+    @SerializedName("employerId")
+    val employerId: String?,
+    @SerializedName("label")
+    val label: String?,
+    @SerializedName("category")
+    val category: String?,
+    @SerializedName("reason")
+    val reason: String?
+)
+
+data class ActionResources(
+    @SerializedName("totalActions")
+    val totalActions: Int?,
+    @SerializedName("totalResources")
+    val totalResources: Int?,
+    @SerializedName("actions")
+    val actions: List<Action>?,
+    @SerializedName("resources")
+    val resources: List<ActionResource>?
+)
+
+data class Action(
+    @SerializedName("id")
+    val id: String?,
+    @SerializedName("organization")
+    val organization: String?,
+    @SerializedName("actionType")
+    val actionType: String?,
+    @SerializedName("status")
+    val status: String?,
+    @SerializedName("resourceCount")
+    val resourceCount: Int?
+)
+
+data class ActionResource(
+    @SerializedName("actionId")
+    val actionId: String?,
+    @SerializedName("actionType")
+    val actionType: String?,
+    @SerializedName("organization")
+    val organization: String?,
+    @SerializedName("status")
+    val status: String?,
+    @SerializedName("url")
+    val url: String?,
+    @SerializedName("label")
+    val label: String?,
+    @SerializedName("description")
+    val description: String?,
+    @SerializedName("startDate")
+    val startDate: String?,
+    @SerializedName("endDate")
+    val endDate: String?,
+    @SerializedName("location")
+    val location: String?
+)
 package com.onlinepicketline.onlinepicketline.data.model
 
 import com.google.gson.annotations.SerializedName

@@ -127,20 +127,21 @@ class MainActivity : AppCompatActivity() {
     
     private fun refreshDisputes() {
         lifecycleScope.launch {
-            val result = repository.fetchDisputes(forceRefresh = true)
+            val result = repository.fetchBlocklist(forceRefresh = true)
             result.fold(
-                onSuccess = { disputes ->
-                    disputeAdapter.submitList(disputes)
+                onSuccess = { blocklistResponse ->
+                    val blocklist = blocklistResponse.blocklist ?: emptyList()
+                    disputeAdapter.submitList(blocklist)
                     Toast.makeText(
                         this@MainActivity,
-                        "Loaded ${disputes.size} active disputes",
+                        "Loaded ${blocklist.size} blocklist entries",
                         Toast.LENGTH_SHORT
                     ).show()
                 },
                 onFailure = { error ->
                     Toast.makeText(
                         this@MainActivity,
-                        "Failed to fetch disputes: ${error.message}",
+                        "Failed to fetch blocklist: ${error.message}",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -149,23 +150,21 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun showBlockDialog(domain: String) {
-        val dispute = repository.findDisputeForDomain(domain) ?: return
-        
+        val entry = repository.findBlocklistEntryForDomain(domain) ?: return
         AlertDialog.Builder(this)
-            .setTitle("Labor Dispute Detected")
+            .setTitle("Labor Action Blocked")
             .setMessage(buildString {
-                append("Company: ${dispute.companyName}\n")
+                append("Employer: ${entry.employer ?: "Unknown"}\n")
                 append("Domain: $domain\n\n")
-                append("Dispute Type: ${dispute.disputeType}\n")
-                append("Description: ${dispute.description}\n")
-                dispute.union?.let { append("Union: $it\n") }
+                append("Reason: ${entry.reason ?: "Labor action"}\n")
+                append("Label: ${entry.label ?: "N/A"}\n")
+                append("Category: ${entry.category ?: "N/A"}\n")
                 append("\nAccess to this site has been blocked.")
             })
             .setPositiveButton("Keep Blocking") { dialog, _ ->
                 dialog.dismiss()
             }
             .setNegativeButton("Allow This Time") { dialog, _ ->
-                // Allow this one time - user would need to manually visit
                 Toast.makeText(this, "Allowed for this session", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }

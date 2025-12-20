@@ -9,14 +9,10 @@ import retrofit2.http.GET
 interface PicketLineApiService {
     
     /**
-     * Fetches the list of companies currently under labor disputes
+     * Fetches the unified blocklist and action resources from the new API
+     * @param format Optional format (json, list, hosts, extension)
+     * @param includeInactive Optional, include inactive employers
      */
-    @GET("api/disputes")
-    suspend fun getDisputedCompanies(): LaborDisputeResponse
-    
-    /**
-     * Alternative endpoint - can be adjusted based on actual API structure
-     */
-    @GET("disputes.json")
-    suspend fun getDisputesJson(): LaborDisputeResponse
+    @GET("api/blocklist?format=json")
+    suspend fun getBlocklist(): BlocklistApiResponse
 }

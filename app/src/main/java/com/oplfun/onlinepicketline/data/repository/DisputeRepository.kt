@@ -24,7 +24,9 @@ class DisputeRepository(context: Context) {
     }
     
     // In-memory cache of disputes
-    private var cachedDisputes: List<LaborDispute> = emptyList()
+    private var cachedBlocklist: List<BlocklistEntry> = emptyList()
+    private var cachedEmployers: List<Employer> = emptyList()
+    private var cachedActionResources: ActionResources? = null
     private var lastFetchTime: Long = 0
     
     // Set of domains that user has chosen to always allow
@@ -54,34 +56,41 @@ class DisputeRepository(context: Context) {
     /**
      * Fetches the latest list of companies under labor disputes
      */
-    suspend fun fetchDisputes(forceRefresh: Boolean = false): Result<List<LaborDispute>> {
+    suspend fun fetchBlocklist(forceRefresh: Boolean = false): Result<BlocklistApiResponse> {
         return withContext(Dispatchers.IO) {
             try {
-                // Return cached data if still valid
                 if (!forceRefresh && isCacheValid()) {
-                    return@withContext Result.success(cachedDisputes)
+                    return@withContext Result.success(
+                        BlocklistApiResponse(
+                            version = null,
+                            generatedAt = null,
+                            totalUrls = cachedBlocklist.size,
+                            employers = cachedEmployers,
+                            blocklist = cachedBlocklist,
+                            actionResources = cachedActionResources
+                        )
+                    )
                 }
-                
-                // Try primary endpoint
-                val response = try {
-                    apiService.getDisputedCompanies()
-                } catch (e: Exception) {
-                    Log.w(TAG, "Primary endpoint failed, trying alternative", e)
-                    // Try alternative endpoint
-                    apiService.getDisputesJson()
-                }
-                
-                cachedDisputes = response.disputes.filter { it.status == "active" }
+                val response = apiService.getBlocklist()
+                cachedBlocklist = response.blocklist ?: emptyList()
+                cachedEmployers = response.employers ?: emptyList()
+                cachedActionResources = response.actionResources
                 lastFetchTime = System.currentTimeMillis()
-                
-                Log.d(TAG, "Fetched ${cachedDisputes.size} active disputes")
-                Result.success(cachedDisputes)
-                
+                Log.d(TAG, "Fetched ${cachedBlocklist.size} blocklist entries")
+                Result.success(response)
             } catch (e: Exception) {
-                Log.e(TAG, "Failed to fetch disputes", e)
-                // Return cached data if available, even if expired
-                if (cachedDisputes.isNotEmpty()) {
-                    Result.success(cachedDisputes)
+                Log.e(TAG, "Failed to fetch blocklist", e)
+                if (cachedBlocklist.isNotEmpty()) {
+                    Result.success(
+                        BlocklistApiResponse(
+                            version = null,
+                            generatedAt = null,
+                            totalUrls = cachedBlocklist.size,
+                            employers = cachedEmployers,
+                            blocklist = cachedBlocklist,
+                            actionResources = cachedActionResources
+                        )
+                    )
                 } else {
                     Result.failure(e)
                 }
@@ -92,20 +101,21 @@ class DisputeRepository(context: Context) {
     /**
      * Checks if a domain matches any disputed company
      */
-    fun findDisputeForDomain(domain: String): LaborDispute? {
+    fun findBlocklistEntryForDomain(domain: String): BlocklistEntry? {
         if (isAllowedDomain(domain)) {
             return null
         }
-        
-        return cachedDisputes.firstOrNull { dispute ->
-            dispute.matchesDomain(domain)
+        return cachedBlocklist.firstOrNull { entry ->
+            entry.url?.contains(domain, ignoreCase = true) == true
         }
     }
     
     /**
      * Gets all cached disputes
      */
-    fun getCachedDisputes(): List<LaborDispute> = cachedDisputes
+    fun getCachedBlocklist(): List<BlocklistEntry> = cachedBlocklist
+    fun getCachedEmployers(): List<Employer> = cachedEmployers
+    fun getCachedActionResources(): ActionResources? = cachedActionResources
     
     /**
      * Marks a domain as allowed (user chose to ignore the block)

@@ -50,9 +50,9 @@ class PicketLineVpnService : VpnService() {
         repository = DisputeRepository.getInstance(applicationContext)
         createNotificationChannel()
         
-        // Fetch initial dispute data
+        // Fetch initial blocklist data
         serviceScope.launch {
-            repository.fetchDisputes()
+            repository.fetchBlocklist()
         }
     }
     
@@ -169,7 +169,7 @@ class PicketLineVpnService : VpnService() {
                 val hostname = destIp.hostName
                 
                 // Check if this domain is under dispute
-                val dispute = repository.findDisputeForDomain(hostname)
+                val entry = repository.findBlocklistEntryForDomain(hostname)
                 if (dispute != null) {
                     Log.d(TAG, "Blocking traffic to ${dispute.companyName} ($hostname)")
                     notifyBlock(hostname, dispute)
