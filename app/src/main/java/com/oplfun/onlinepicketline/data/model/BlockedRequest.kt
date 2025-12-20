@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline.data.model
+package com.onlinepicketline.onlinepicketline.data.model
 
 /**
  * Represents a blocked request decision

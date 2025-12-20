@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline.data.api
+package com.onlinepicketline.onlinepicketline.data.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

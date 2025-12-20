@@ -27,7 +27,7 @@ opl-for-android/
 │   └── src/
 │       ├── main/
 │       │   ├── AndroidManifest.xml         # App manifest with permissions
-│       │   ├── java/com/oplfun/onlinepicketline/
+│       │   ├── java/com/onlinepicketline/onlinepicketline/
 │       │   │   ├── MainActivity.kt         # Main UI (218 lines)
 │       │   │   ├── SettingsActivity.kt     # Settings screen (32 lines)
 │       │   │   ├── data/
@@ -51,7 +51,7 @@ opl-for-android/
 │       │       ├── values/                           # Strings, colors, themes
 │       │       └── xml/                              # Preferences
 │       └── test/
-│           └── java/com/oplfun/onlinepicketline/
+│           └── java/com/onlinepicketline/onlinepicketline/
 │               └── LaborDisputeTest.kt               # Unit tests (113 lines)
 ├── gradle/                                           # Gradle wrapper
 ├── build.gradle.kts                                  # Root build config

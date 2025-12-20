@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline
+package com.onlinepicketline.onlinepicketline
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

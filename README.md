@@ -35,7 +35,7 @@ This application uses VPN technology to monitor outgoing network traffic and com
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/oplfun/opl-for-android.git
+   git clone https://github.com/online-picket-line/opl-for-android.git
    cd opl-for-android
    ```
 
@@ -112,7 +112,7 @@ The app follows modern Android development practices:
 ### Project Structure
 
 ```
-app/src/main/java/com/oplfun/onlinepicketline/
+app/src/main/java/com/onlinepicketline/onlinepicketline/
 ├── data/
 │   ├── api/           # API service definitions
 │   ├── model/         # Data models
@@ -150,7 +150,7 @@ This project is open source. Please check the LICENSE file for details.
 ## Support
 
 For issues, questions, or contributions, please visit:
-https://github.com/oplfun/opl-for-android
+https://github.com/online-picket-line/opl-for-android
 
 ## Acknowledgments
 

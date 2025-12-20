@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline.ui
+package com.onlinepicketline.onlinepicketline.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.oplfun.onlinepicketline.R
-import com.oplfun.onlinepicketline.data.model.LaborDispute
+import com.onlinepicketline.onlinepicketline.R
+import com.onlinepicketline.onlinepicketline.data.model.LaborDispute
 
 /**
  * Adapter for displaying labor disputes in a RecyclerView

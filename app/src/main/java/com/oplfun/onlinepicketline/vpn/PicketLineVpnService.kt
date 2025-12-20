@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline.vpn
+package com.onlinepicketline.onlinepicketline.vpn
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -9,10 +9,10 @@ import android.net.VpnService
 import android.os.Build
 import android.os.ParcelFileDescriptor
 import android.util.Log
-import com.oplfun.onlinepicketline.MainActivity
-import com.oplfun.onlinepicketline.R
-import com.oplfun.onlinepicketline.data.model.LaborDispute
-import com.oplfun.onlinepicketline.data.repository.DisputeRepository
+import com.onlinepicketline.onlinepicketline.MainActivity
+import com.onlinepicketline.onlinepicketline.R
+import com.onlinepicketline.onlinepicketline.data.model.LaborDispute
+import com.onlinepicketline.onlinepicketline.data.repository.DisputeRepository
 import kotlinx.coroutines.*
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -37,9 +37,9 @@ class PicketLineVpnService : VpnService() {
         private const val NOTIFICATION_CHANNEL_ID = "picketline_vpn"
         private const val NOTIFICATION_ID = 1
         
-        const val ACTION_START = "com.oplfun.onlinepicketline.START_VPN"
-        const val ACTION_STOP = "com.oplfun.onlinepicketline.STOP_VPN"
-        const val ACTION_BLOCK_NOTIFICATION = "com.oplfun.onlinepicketline.BLOCK_NOTIFICATION"
+        const val ACTION_START = "com.onlinepicketline.onlinepicketline.START_VPN"
+        const val ACTION_STOP = "com.onlinepicketline.onlinepicketline.STOP_VPN"
+        const val ACTION_BLOCK_NOTIFICATION = "com.onlinepicketline.onlinepicketline.BLOCK_NOTIFICATION"
         
         const val EXTRA_DOMAIN = "domain"
         const val EXTRA_DISPUTE = "dispute"

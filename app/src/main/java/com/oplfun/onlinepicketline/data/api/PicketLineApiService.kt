@@ -1,6 +1,6 @@
-package com.oplfun.onlinepicketline.data.api
+package com.onlinepicketline.onlinepicketline.data.api
 
-import com.oplfun.onlinepicketline.data.model.LaborDisputeResponse
+import com.onlinepicketline.onlinepicketline.data.model.LaborDisputeResponse
 import retrofit2.http.GET
 
 /**

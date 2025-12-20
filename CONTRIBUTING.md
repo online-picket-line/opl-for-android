@@ -15,7 +15,7 @@ This project aims to support workers and labor movements. We ask all contributor
 ### Reporting Bugs
 
 Before creating a bug report:
-1. Check if the issue already exists in the [Issues](https://github.com/oplfun/opl-for-android/issues) page
+1. Check if the issue already exists in the [Issues](https://github.com/online-picket-line/opl-for-android/issues) page
 2. Verify you're using the latest version
 
 When creating a bug report, include:
@@ -38,7 +38,7 @@ Enhancement suggestions are welcome! Include:
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/oplfun/opl-for-android.git
+   git clone https://github.com/online-picket-line/opl-for-android.git
    cd opl-for-android
    git checkout -b feature/your-feature-name
    ```
@@ -188,7 +188,7 @@ When contributing, keep in mind:
 
 ## Getting Help
 
-- **Questions**: Open a [Discussion](https://github.com/oplfun/opl-for-android/discussions)
+- **Questions**: Open a [Discussion](https://github.com/online-picket-line/opl-for-android/discussions)
 - **Chat**: Join our community chat (if available)
 - **Documentation**: Check README.md and BUILDING.md
 

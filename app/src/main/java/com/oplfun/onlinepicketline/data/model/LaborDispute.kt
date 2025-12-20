@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline.data.model
+package com.onlinepicketline.onlinepicketline.data.model
 
 import com.google.gson.annotations.SerializedName
 

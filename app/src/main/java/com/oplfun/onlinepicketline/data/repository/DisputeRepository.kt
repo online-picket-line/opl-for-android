@@ -1,11 +1,11 @@
-package com.oplfun.onlinepicketline.data.repository
+package com.onlinepicketline.onlinepicketline.data.repository
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import com.oplfun.onlinepicketline.data.api.ApiClient
-import com.oplfun.onlinepicketline.data.api.PicketLineApiService
-import com.oplfun.onlinepicketline.data.model.LaborDispute
+import com.onlinepicketline.onlinepicketline.data.api.ApiClient
+import com.onlinepicketline.onlinepicketline.data.api.PicketLineApiService
+import com.onlinepicketline.onlinepicketline.data.model.LaborDispute
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

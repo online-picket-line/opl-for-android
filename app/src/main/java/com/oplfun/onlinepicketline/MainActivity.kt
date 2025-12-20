@@ -1,4 +1,4 @@
-package com.oplfun.onlinepicketline
+package com.onlinepicketline.onlinepicketline
 
 import android.app.Activity
 import android.content.Intent
@@ -15,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.oplfun.onlinepicketline.data.repository.DisputeRepository
-import com.oplfun.onlinepicketline.ui.DisputeAdapter
-import com.oplfun.onlinepicketline.vpn.PicketLineVpnService
+import com.onlinepicketline.onlinepicketline.data.repository.DisputeRepository
+import com.onlinepicketline.onlinepicketline.ui.DisputeAdapter
+import com.onlinepicketline.onlinepicketline.vpn.PicketLineVpnService
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {

@@ -21,7 +21,7 @@ Before building the application, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/oplfun/opl-for-android.git
+git clone https://github.com/online-picket-line/opl-for-android.git
 cd opl-for-android
 ```
 
@@ -86,7 +86,7 @@ app/build/outputs/apk/release/app-release.apk
 
 #### Run Specific Test
 ```bash
-./gradlew test --tests "com.oplfun.onlinepicketline.LaborDisputeTest"
+./gradlew test --tests "com.onlinepicketline.onlinepicketline.LaborDisputeTest"
 ```
 
 ## Installing the App
@@ -136,7 +136,7 @@ Click the **Run** button or press `Shift+F10`
 ### From Command Line
 ```bash
 ./gradlew installDebug
-adb shell am start -n com.oplfun.onlinepicketline/.MainActivity
+adb shell am start -n com.onlinepicketline.onlinepicketline/.MainActivity
 ```
 
 ## Troubleshooting
@@ -190,7 +190,7 @@ opl-for-android/
 │   └── src/
 │       ├── main/
 │       │   ├── AndroidManifest.xml
-│       │   ├── java/com/oplfun/onlinepicketline/
+│       │   ├── java/com/onlinepicketline/onlinepicketline/
 │       │   │   ├── MainActivity.kt
 │       │   │   ├── SettingsActivity.kt
 │       │   │   ├── data/         # Data layer (API, models, repository)
@@ -261,7 +261,7 @@ jobs:
 ## Support
 
 For build issues:
-1. Check the [Issues](https://github.com/oplfun/opl-for-android/issues) page
+1. Check the [Issues](https://github.com/online-picket-line/opl-for-android/issues) page
 2. Create a new issue with:
    - Your OS and Android Studio version
    - Full error output

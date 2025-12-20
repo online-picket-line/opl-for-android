@@ -360,7 +360,7 @@ If users report API problems:
 
 ### Reporting Problems
 Users can report issues at:
-https://github.com/oplfun/opl-for-android/issues
+https://github.com/online-picket-line/opl-for-android/issues
 
 ## Example Implementation
 

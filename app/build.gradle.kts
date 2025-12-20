@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.oplfun.onlinepicketline"
+    namespace = "com.onlinepicketline.onlinepicketline"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.oplfun.onlinepicketline"
+        applicationId = "com.onlinepicketline.onlinepicketline"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
