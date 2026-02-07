@@ -21,8 +21,7 @@ class BootReceiver : BroadcastReceiver() {
         if (!autoBlockEnabled) return
         
         // Only restart if we have an API key and VPN permission
-        val secureStorage = SecureStorage(context)
-        if (secureStorage.getApiKey() == null) return
+        if (SecureStorage.getApiKey(context) == null) return
         
         // Check if VPN permission was previously granted
         val vpnIntent = VpnService.prepare(context)

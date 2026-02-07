@@ -228,8 +228,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateVpnStatus(running: Boolean) {
         binding.vpnStatusText.text = if (running) "Protection Active" else "Protection Off"
         binding.vpnStatusIcon.setImageResource(
-            if (running) R.drawable.ic_launcher_foreground
-            else R.drawable.ic_launcher_background
+            if (running) R.mipmap.ic_launcher_foreground
+            else R.mipmap.ic_launcher_background
         )
     }
 
