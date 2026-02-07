@@ -1,12 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Online Picket Line</string>
-    <string name="start_protection">Start Protection</string>
-    <string name="stop_protection">Stop Protection</string>
-    <string name="refresh_disputes">Refresh Disputes</string>
-    <string name="active_disputes">Active Labor Disputes</string>
-    <string name="settings">Settings</string>
-    <string name="allowed_domains">Allowed Domains</string>
-    <string name="api_base_url">API Base URL</string>
-    <string name="api_base_url_summary">URL of the Online Picket Line API</string>
+    <string name="gps_snapshot_title">GPS Snapshot</string>
+    <string name="settings_title">Settings</string>
+    <string name="submit_strike_title">Submit Labor Action</string>
+    <string name="block_page_title">Active Labor Action</string>
+
+    <!-- Dashboard -->
+    <string name="vpn_protection">VPN Protection</string>
+    <string name="blocked_sites">Blocked Sites</string>
+    <string name="employers_tracked">Employers</string>
+    <string name="alerts_triggered">Alerts</string>
+    <string name="nearby_strikes">Nearby Strikes</string>
+    <string name="no_strikes_nearby">No active strikes nearby</string>
+    <string name="protection_active">Protection Active</string>
+    <string name="protection_off">Protection Off</string>
+
+    <!-- API Key -->
+    <string name="api_key_setup_title">API Key Required</string>
+    <string name="api_key_setup_desc">Enter the API key provided by your organization to connect to Online Picket Line.</string>
+    <string name="api_key_hint">opl_xxxx…</string>
+    <string name="save_api_key">Save API Key</string>
+
+    <!-- GPS Snapshot -->
+    <string name="select_strike">Select Strike</string>
+    <string name="use_current_location">Use Current Location</string>
+    <string name="or_enter_manually">Or enter manually:</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="lookup_coordinates">Look Up Coordinates</string>
+    <string name="address_hint">Street, City, State ZIP</string>
+    <string name="lookup_address">Look Up Address</string>
+    <string name="notes_hint">Notes (optional)</string>
+    <string name="submit_snapshot">Submit Snapshot</string>
+
+    <!-- Submit Strike -->
+    <string name="employer_name">Employer Name *</string>
+    <string name="employer_industry">Industry</string>
+    <string name="employer_website">Employer Website</string>
+    <string name="organization">Union/Organization *</string>
+    <string name="action_type">Action Type</string>
+    <string name="location">Location *</string>
+    <string name="start_date">Start Date (YYYY-MM-DD) *</string>
+    <string name="duration_days">Duration (days)</string>
+    <string name="description">Description *</string>
+    <string name="demands">Worker Demands</string>
+    <string name="contact_info">Contact Information</string>
+    <string name="learn_more_url">Learn More URL</string>
+    <string name="geocode_location">Geocode Location</string>
+    <string name="submit_strike">Submit for Review</string>
+
+    <!-- Block Page -->
+    <string name="respect_picket_line">Respect the Picket Line</string>
+    <string name="proceed_anyway">Proceed Anyway</string>
+
+    <!-- Settings -->
+    <string name="enable_notifications">Enable Notifications</string>
+    <string name="auto_block">Auto-block Traffic</string>
+    <string name="gps_alerts">GPS Strike Alerts</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="reset_api_key">Reset API Key</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
 </resources>

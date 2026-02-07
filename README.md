@@ -1,159 +1,125 @@
 # Online Picket Line for Android
 
-Android phone application that filters outgoing traffic to inform users when they are accessing a company currently under a labor dispute.
-
-## Overview
-
-This application uses VPN technology to monitor outgoing network traffic and compares accessed domains against a database of companies involved in labor disputes. When a match is found, the app blocks the request and notifies the user, who can then choose to:
-- Keep the site blocked
-- Allow access this one time
-- Always allow access to this domain
+Native Android application that helps workers stand in solidarity with active labor disputes. The app uses local VPN technology to notify users when accessing companies with active strikes, provides GPS-based proximity alerts for nearby picket lines, and allows users to submit strike reports and GPS location snapshots.
 
 ## Features
 
-- **Real-time Traffic Monitoring**: Uses Android VPN Service to intercept outgoing traffic
-- **Labor Dispute Database**: Fetches and caches information from the Online Picket Line API
-- **User Control**: Users can override blocks and manage allowed domains
-- **Notifications**: Informs users when accessing disputed companies
-- **Privacy First**: All filtering happens locally on the device
+- **VPN-Based Traffic Filtering**: Uses Android VPN Service to intercept DNS queries locally and notify users when accessing sites of employers with active labor disputes
+- **GPS Strike Proximity Alerts**: Monitors your location and alerts you when within 100 miles of an active picket line
+- **GPS Snapshot**: Submit your GPS coordinates to augment strike location data
+- **Strike Submission**: Report new labor actions through a built-in submission wizard
+- **Hash-Based Caching**: Efficient data syncing using SHA-256 content hashes and HTTP 304 responses
+- **Privacy First**: All traffic filtering happens locally on-device — no browsing data leaves the app
 
 ## Requirements
 
-- Android 7.0 (API level 24) or higher
-- Internet connection for fetching dispute data
+- Android 8.0 (API level 26) or higher
+- Internet connection for fetching strike data
 - VPN permission (requested at runtime)
+- Location permission (optional, for GPS features)
+- API key from your OPL administrator
 
-## Building the Project
+## Building
 
 ### Prerequisites
 
-- Android Studio Arctic Fox or later
-- JDK 8 or higher
-- Android SDK with API level 34
+- Android Studio Hedgehog (2023.1.1) or later
+- JDK 17
+- Android SDK with compileSdk 35
 
 ### Build Steps
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/online-picket-line/opl-for-android.git
-   cd opl-for-android
-   ```
+```bash
+git clone https://github.com/oplfun/opl-for-android.git
+cd opl-for-android
 
-2. Open the project in Android Studio
+# Build debug APK
+./gradlew assembleDebug
 
-3. Sync Gradle files
+# Install on connected device
+./gradlew installDebug
 
-4. Build the project:
-   ```bash
-   ./gradlew build
-   ```
-
-5. Run on device or emulator:
-   ```bash
-   ./gradlew installDebug
-   ```
-
-## Usage
-
-1. **Launch the App**: Open Online Picket Line from your app drawer
-
-2. **Start Protection**: Tap "Start Protection" and grant VPN permission when prompted
-
-3. **Browse Normally**: The app runs in the background monitoring your traffic
-
-4. **Handle Blocks**: When accessing a disputed company's site, you'll receive a notification with details about the labor dispute and options to proceed
-
-5. **Manage Settings**:
-   - Configure API URL in Settings
-   - View and manage allowed domains
-   - Refresh dispute data manually
-
-## API Integration
-
-The app communicates with the Online Picket Line API to fetch information about companies under labor disputes. 
-
-### Expected API Response Format
-
-```json
-{
-  "disputes": [
-    {
-      "id": "dispute-id",
-      "company_name": "Company Name",
-      "domain": "example.com",
-      "domains": ["www.example.com", "shop.example.com"],
-      "dispute_type": "Strike",
-      "description": "Workers are on strike for better wages",
-      "start_date": "2024-01-01",
-      "union": "Workers Union Local 123",
-      "status": "active",
-      "more_info_url": "https://example.org/info"
-    }
-  ],
-  "last_updated": "2024-01-15T12:00:00Z"
-}
+# Run tests
+./gradlew test
 ```
 
-### Configuring API URL
+### Configuration
 
-By default, the app uses `https://api.onlinepicketline.org/` as the base URL. You can change this in the Settings screen.
+The API base URL defaults to `https://onlinepicketline.com`. To override for development, set the `API_BASE_URL` build config field in `app/build.gradle.kts`.
 
 ## Architecture
 
-The app follows modern Android development practices:
-
-- **Kotlin**: Primary programming language
-- **MVVM Pattern**: Separation of concerns
-- **Coroutines**: Asynchronous operations
-- **Retrofit**: Network communication
-- **Material Design**: UI components
-- **VPN Service**: Traffic interception
-
-### Project Structure
-
 ```
-app/src/main/java/com/onlinepicketline/onlinepicketline/
+com.onlinepicketline.opl/
 ├── data/
-│   ├── api/           # API service definitions
-│   ├── model/         # Data models
-│   └── repository/    # Data repository layer
-├── vpn/               # VPN service implementation
-├── ui/                # UI components and adapters
-├── MainActivity.kt    # Main app screen
-└── SettingsActivity.kt # Settings screen
+│   ├── api/           # Retrofit API service + OkHttp client
+│   ├── model/         # Data models (API request/response types)
+│   └── repository/    # Repository with hash-based caching
+├── ui/                # Activities (Main, Settings, GPS Snapshot, Submit Strike, Block Page)
+├── vpn/               # VPN service with DNS interception
+├── util/              # SecureStorage (EncryptedSharedPreferences), LocationUtils
+└── receiver/          # BootReceiver for auto-restart
 ```
 
-## Permissions
+### Key Technologies
 
-The app requires the following permissions:
+| Component | Technology |
+|-----------|-----------|
+| Language | Kotlin 2.1.0 |
+| HTTP Client | Retrofit 2.11.0 + OkHttp 4.12.0 |
+| Secure Storage | EncryptedSharedPreferences |
+| Location | Google Play Services Location 21.3.0 |
+| UI | Material Design 3 + ViewBinding |
+| Async | Kotlin Coroutines 1.9.0 |
+| Background | WorkManager 2.10.0 |
 
-- `INTERNET`: To fetch dispute data from API
-- `BIND_VPN_SERVICE`: To create VPN connection for traffic monitoring
-- `FOREGROUND_SERVICE`: To run VPN service in foreground
-- `POST_NOTIFICATIONS`: To notify users about blocked sites
+## API Integration
 
-## Privacy & Security
+The app communicates with the OPL Mobile API using an `X-API-Key` header. Keys use the format `opl_` + 64 hex characters (68 chars total).
 
-- All traffic filtering occurs locally on your device
-- No browsing data is sent to external servers
-- Only domain names are checked against the dispute database
-- VPN connection is used solely for filtering, not routing through external servers
+### Endpoints
 
-## Contributing
+| Method | Endpoint | Scope | Description |
+|--------|----------|-------|-------------|
+| GET | `/api/mobile/data` | `read:mobile` | Combined blocklist + geofences |
+| GET | `/api/mobile/active-strikes` | `read:mobile` | List of active strikes |
+| POST | `/api/mobile/gps-snapshot` | `write:gps-snapshot` | Submit GPS location snapshot |
+| POST | `/api/mobile/submit-strike` | `write:submit-strike` | Submit new strike report |
+| POST | `/api/mobile/geocode` | `read:mobile` | Forward geocoding |
+| POST | `/api/mobile/reverse-geocode` | `read:mobile` | Reverse geocoding |
 
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+## Usage
+
+1. **API Key Setup**: Enter your API key on first launch
+2. **Enable VPN**: Tap the VPN toggle to start monitoring traffic
+3. **Browse Normally**: You'll get notified when accessing an employer with an active dispute
+4. **Check Nearby Strikes**: The dashboard shows strikes within your configured radius
+5. **Submit Data**: Use the GPS Snapshot or Submit Strike forms to contribute data
+
+## Testing
+
+```bash
+# Unit tests
+./gradlew test
+
+# Specific test class
+./gradlew test --tests "com.onlinepicketline.opl.data.model.ModelsTest"
+```
+
+Tests cover:
+- Data model serialization/deserialization
+- DNS packet parsing in VPN service
+- URL matching logic in repository
+- Distance calculations
+
+## Security
+
+- API keys stored in EncryptedSharedPreferences (AES-256-GCM + RSA)
+- All network traffic uses HTTPS
+- No browsing history or DNS queries stored or transmitted
+- VPN runs entirely locally — no remote tunnel
+- API key format validated before use (`opl_` prefix, 68 chars)
 
 ## License
 
-This project is open source. Please check the LICENSE file for details.
-
-## Support
-
-For issues, questions, or contributions, please visit:
-https://github.com/online-picket-line/opl-for-android
-
-## Acknowledgments
-
-- Built to support workers and labor movements
-- Inspired by the digital picket line concept
-- Uses the Online Picket Line API for dispute information
+GPL-3.0 — see [LICENSE](LICENSE)
