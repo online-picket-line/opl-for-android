@@ -1,5 +1,6 @@
 package com.onlinepicketline.opl.ui
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
@@ -62,6 +63,10 @@ class SettingsActivity : AppCompatActivity() {
             ApiClient.reset()
             binding.apiKeyStatus.text = "No API key"
             Toast.makeText(this, "API key removed. Restart app to reconfigure.", Toast.LENGTH_LONG).show()
+        }
+
+        binding.aboutButton.setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
         }
     }
 

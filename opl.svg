@@ -1,0 +1,38 @@
+<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="vertical-opal">
+      <ellipse cx="150" cy="200" rx="130" ry="180" />
+    </clipPath>
+    
+    <filter id="opal-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <ellipse cx="150" cy="200" rx="130" ry="180" fill="#f0f4f8" />
+
+  <g clip-path="url(#vertical-opal)" filter="url(#opal-glow)">
+    <polygon points="0,0 100,0 80,70 0,90" fill="#E0F7FA" />
+    <polygon points="100,0 200,0 220,60 80,70" fill="#B2EBF2" />
+    <polygon points="200,0 300,0 300,80 220,60" fill="#E1F5FE" />
+
+    <polygon points="0,90 80,70 120,150 0,160" fill="#FFECB3" />
+    <polygon points="80,70 220,60 200,140 120,150" fill="#F8BBD0" />
+    <polygon points="220,60 300,80 300,170 200,140" fill="#C5CAE9" />
+
+    <polygon points="0,160 120,150 140,230 0,240" fill="#DCEDC8" />
+    <polygon points="120,150 200,140 250,220 140,230" fill="#B3E5FC" />
+    <polygon points="200,140 300,170 300,250 250,220" fill="#D1C4E9" />
+
+    <polygon points="0,240 140,230 110,320 0,310" fill="#FFCCBC" />
+    <polygon points="140,230 250,220 230,310 110,320" fill="#B2DFDB" />
+    <polygon points="250,220 300,250 300,330 230,310" fill="#F0F4C3" />
+
+    <polygon points="0,310 110,320 150,400 0,400" fill="#CFD8DC" />
+    <polygon points="110,320 230,310 200,400 150,400" fill="#FFE082" />
+    <polygon points="230,310 300,330 300,400 200,400" fill="#B2EBF2" />
+  </g>
+
+  <ellipse cx="150" cy="200" rx="130" ry="180" fill="none" stroke="white" stroke-width="0.5" opacity="0.4" />
+</svg>

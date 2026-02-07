@@ -56,9 +56,37 @@
     <!-- Settings -->
     <string name="enable_notifications">Enable Notifications</string>
     <string name="auto_block">Auto-block Traffic</string>
+    <string name="auto_block_description">System-wide filtering ensures your device respects your user-defined ethical boundaries across all apps, not just your browser.</string>
     <string name="gps_alerts">GPS Strike Alerts</string>
     <string name="clear_cache">Clear Cache</string>
     <string name="reset_api_key">Reset API Key</string>
+    <string name="about_opl">About Online Picket Line</string>
+
+    <!-- About Page -->
+    <string name="about_mission_title">Our Mission</string>
+    <string name="about_mission_body">Online Picket Line empowers workers and labor supporters in the digital age. When workers stand on a picket line, they\'re making a powerful statement. We help ensure that statement is heard everywhere \u2014 including the digital world. Every purchase is a vote, and we give you the tools to vote with your values.</string>
+    <string name="about_wallet_tagline">Your wallet is a picket line.</string>
+    <string name="about_pillars_title">Our Three Pillars</string>
+    <string name="pillar_privacy_title">Privacy \u2014 Data Sovereignty</string>
+    <string name="pillar_privacy_body">We empower you to define your own \'secure borders\' where your data cannot leave your device. All filtering decisions are made on-device \u2014 we never route your traffic through our servers or log your browsing history.</string>
+    <string name="pillar_safety_title">Safety \u2014 Risk Mitigation</string>
+    <string name="pillar_safety_body">We reduce the risk of accidental digital scabbing by automating awareness and filtering based on verified labor action data from moderated sources.</string>
+    <string name="pillar_control_title">Control \u2014 Transparency</string>
+    <string name="pillar_control_body">We provide you with a clear view of which domains are associated with active disputes, so you can make informed choices \u2014 not blind ones.</string>
+    <string name="about_network_sovereignty_title">Network Sovereignty</string>
+    <string name="about_network_sovereignty_body">Modern economic activity doesn\'t just happen in web browsers. Delivery apps, gig-economy platforms, and background services all interact with employer infrastructure \u2014 often without your awareness. This app provides comprehensive, system-wide filtering that covers all network traffic on your device. All filtering is performed locally \u2014 we do not log your browsing history, backhaul your traffic, or transmit your location data.</string>
+    <string name="about_boundaries_title">User-Defined Ethical Boundaries</string>
+    <string name="about_boundaries_body">You choose the level of engagement: Informational Mode gives you awareness alerts while retaining full access. Blocking Mode provides system-wide filtering that prevents your device from interacting with restricted employer infrastructure. Location-Aware Mode adapts filtering based on your proximity to active picket lines. These boundaries are entirely user-initiated and user-controlled. You define the rules. Our tools enforce them.</string>
+    <string name="about_who_we_are_title">Who We Are</string>
+    <string name="about_who_we_are_body">Online Picket Line is a Utah Benefit LLC \u2014 a legal structure that emphasizes mission over money. Our tools are Movement-Owned Technology, designed to provide a pro-competitive, privacy-first alternative that restores the balance between employer interests and worker rights in the digital economy. We are funded by donations and grants from labor-friendly organizations.</string>
+    <string name="about_iww_quote">\"An injury to one is an injury to all\"</string>
+    <string name="about_iww_attribution">\u2014 Industrial Workers of the World motto</string>
+    <string name="about_links_title">Links</string>
+    <string name="about_link_website">Project Website</string>
+    <string name="about_link_source">Source Code</string>
+    <string name="about_link_issues">Report an Issue</string>
+    <string name="about_link_privacy">Privacy Policy</string>
+    <string name="about_link_terms">Terms of Service</string>
 
     <!-- Menu -->
     <string name="action_settings">Settings</string>

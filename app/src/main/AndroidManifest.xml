@@ -35,6 +35,11 @@
             android:parentActivityName=".ui.MainActivity" />
 
         <activity
+            android:name=".ui.AboutActivity"
+            android:parentActivityName=".ui.SettingsActivity"
+            android:label="About Online Picket Line" />
+
+        <activity
             android:name=".ui.GpsSnapshotActivity"
             android:parentActivityName=".ui.MainActivity"
             android:label="@string/gps_snapshot_title" />
