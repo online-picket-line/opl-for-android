@@ -99,3 +99,28 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
+
+tasks.withType<Test> {
+    testLogging {
+        events = setOf()
+        showStandardStreams = false
+    }
+    addTestListener(object : TestListener {
+        override fun beforeSuite(suite: TestDescriptor) {}
+        override fun afterSuite(suite: TestDescriptor, result: TestResult) {
+            if (suite.parent == null) {
+                println()
+                println("${result.testCount} tests, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped")
+            }
+        }
+        override fun beforeTest(desc: TestDescriptor) {}
+        override fun afterTest(desc: TestDescriptor, result: TestResult) {
+            val symbol = when (result.resultType) {
+                TestResult.ResultType.SUCCESS -> "·"
+                TestResult.ResultType.FAILURE -> "✗"
+                TestResult.ResultType.SKIPPED -> "-"
+            }
+            print(symbol)
+        }
+    })
+}

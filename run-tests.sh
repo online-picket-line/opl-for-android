@@ -50,7 +50,7 @@ echo "Using: $GRADLE"
 echo ""
 
 # Run unit tests (local JVM tests, no emulator needed)
-"$GRADLE" testDebugUnitTest --console=plain 2>&1
+"$GRADLE" testDebugUnitTest --console=plain --quiet 2>&1
 
 echo ""
 echo "========================================="
